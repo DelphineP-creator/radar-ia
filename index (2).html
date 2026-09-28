@@ -1,860 +1,398 @@
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar IA | Veille de marché sur-mesure | Delphine Pellas</title>
+<meta name="description" content="Un agent de veille automatisé surveille les sources de votre secteur en continu, filtre le bruit et vous livre chaque semaine un rapport synthétique, analysé et sourcé, directement dans votre boîte mail.">
 
-/* ===== Scope global : tout est préfixé .rdx pour ne pas polluer le reste de la page systeme.io ===== */
-.rdx-page, .rdx-page * { margin:0; padding:0; box-sizing:border-box; }
-.rdx-page {
-  font-family:'Poppins', sans-serif;
-  background:linear-gradient(180deg,#1B2A4A 0%,#0F1B33 100%);
-  color:#FFFFFF;
-  line-height:1.65;
-  overflow-x:hidden;
+<!-- Open Graph (aperçu LinkedIn / réseaux) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Radar IA | Veille de marché sur-mesure">
+<meta property="og:description" content="Les signaux faibles de votre marché, sur votre bureau chaque lundi, avant qu'ils ne deviennent l'actualité de tout le monde.">
+<meta property="og:image" content="https://delphinep-creator.github.io/radar-ia/og-image.png">
+<meta property="og:url" content="https://delphinep-creator.github.io/radar-ia/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#1B2A4A;
+  --navy2:#223458;
+  --orange:#F26522;
+  --text:#EAF0F8;
+  --muted:#9FB0C9;
+  --line:rgba(255,255,255,0.10);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--navy);
+  color:var(--text);
+  line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
-.rdx-page a { text-decoration:none; }
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px;}
+section{padding:64px 0;border-bottom:1px solid var(--line);}
+.alt{background:var(--navy2);}
+.eyebrow{
+  font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--orange);margin-bottom:16px;
+}
+h1{font-size:clamp(30px,6vw,50px);font-weight:800;line-height:1.12;letter-spacing:-0.5px;}
+h1 .hl{color:var(--orange);}
+h2{font-size:clamp(24px,4.4vw,36px);font-weight:700;line-height:1.2;letter-spacing:-0.4px;margin-bottom:16px;}
+h3{font-size:19px;font-weight:600;margin-bottom:8px;}
+p{color:var(--muted);font-size:16px;}
+p.lead{color:var(--text);font-size:clamp(17px,2.4vw,20px);font-weight:400;}
+.center{text-align:center;}
+.btn{
+  display:inline-block;background:var(--orange);color:#fff;font-weight:600;font-size:16px;
+  padding:16px 34px;border-radius:10px;text-decoration:none;margin-top:26px;
+  transition:transform .15s ease,box-shadow .15s ease;
+  box-shadow:0 10px 30px rgba(242,101,34,0.28);
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(242,101,34,0.4);}
 
-/* ===== Layout ===== */
-.rdx-section { padding:64px 22px; position:relative; }
-.rdx-inner { max-width:1040px; margin:0 auto; position:relative; z-index:1; }
-.rdx-dots {
-  background-image:radial-gradient(rgba(74,111,165,0.14) 1.5px, transparent 1.5px);
-  background-size:24px 24px;
-}
-.rdx-alt { background:rgba(15,27,51,0.55); }
+/* HERO */
+.hero{padding:88px 0 76px;border-bottom:1px solid var(--line);}
+.hero p.lead{max-width:640px;margin-top:22px;}
+.tagline{color:var(--muted);font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:22px;}
 
-/* ===== Typo ===== */
-.rdx-eyebrow {
-  display:block;
-  color:#F26522;
-  font-size:12px;
-  font-weight:600;
-  letter-spacing:3.5px;
-  text-transform:uppercase;
-  margin-bottom:16px;
-}
-.rdx-h1 {
-  font-size:30px;
-  font-weight:700;
-  line-height:1.25;
-  margin-bottom:20px;
-  color:#FFFFFF;
-}
-.rdx-h2 {
-  font-size:24px;
-  font-weight:700;
-  line-height:1.3;
-  margin-bottom:20px;
-  color:#FFFFFF;
-}
-.rdx-sub {
-  color:#A0B4CC;
-  font-size:16px;
-  max-width:640px;
-}
-.rdx-center { text-align:center; }
-.rdx-center .rdx-sub { margin-left:auto; margin-right:auto; }
+/* GRID 3 */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:34px;}
+.card{background:var(--navy);border:1px solid var(--line);border-radius:14px;padding:26px;}
+.step-num{font-size:34px;font-weight:800;color:var(--orange);line-height:1;margin-bottom:12px;}
 
-/* ===== CTA ===== */
-.rdx-btn {
-  display:inline-block;
-  background:#F26522;
-  color:#FFFFFF;
-  font-family:'Poppins', sans-serif;
-  font-size:16px;
-  font-weight:600;
-  padding:16px 34px;
-  border-radius:8px;
-  margin-top:32px;
-  transition:background 0.2s ease, transform 0.2s ease;
-}
-.rdx-btn:hover { background:#D9551A; transform:translateY(-2px); }
-.rdx-btn:focus-visible { outline:3px solid #7EB8E0; outline-offset:3px; }
+/* PROBLEME */
+.probs{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:30px;}
+.prob{border-left:3px solid var(--orange);padding-left:18px;}
 
-/* ===== Hero ===== */
-.rdx-hero { padding:88px 22px 96px; }
-.rdx-hero .rdx-h1 { max-width:760px; }
-.rdx-hero .rdx-h1 em { font-style:normal; color:#F26522; }
+/* PROFILS */
+.profiles{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:32px;}
+.profile{background:var(--navy2);border:1px solid var(--line);border-radius:12px;padding:22px 24px;}
+.profile h3{color:var(--text);font-size:17px;margin-bottom:10px;}
+.profile .sig{color:var(--muted);font-size:15px;line-height:1.5;}
+.profile .sig b{color:var(--text);font-weight:600;}
 
-/* ===== Problème : 3 blocs ===== */
-.rdx-problems { margin-top:40px; display:grid; gap:24px; }
-.rdx-problem {
-  border-left:3px solid #F26522;
-  padding:4px 0 4px 20px;
-  color:#A0B4CC;
-  font-size:16px;
-}
+/* REPORT MOCKUP */
+.mail{max-width:720px;margin:38px auto 0;border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.4);background:#fff;}
+.mail-bar{background:#2D2D2D;height:40px;display:flex;align-items:center;padding:0 16px;gap:8px;}
+.dot{width:11px;height:11px;border-radius:50%;}
+.dot.r{background:#ff5f56;}.dot.y{background:#ffbd2e;}.dot.g{background:#27c93f;}
+.mail-sub{color:#c9c9c9;font-size:12px;margin-left:12px;}
+.toggle{background:#fff;padding:16px 22px;border-bottom:2px solid #E8EDF2;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;}
+.toggle:hover{background:#FAFAFA;}
+.toggle-label{font-size:13px;font-weight:600;color:#333;}
+.toggle-ico{font-size:16px;color:#C0392B;transition:transform .3s ease;}
+.toggle.open .toggle-ico{transform:rotate(180deg);}
+.rbody{background:#fff;max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.25,.46,.45,.94);}
+.rbody.open{max-height:3000px;}
+.rin{padding:24px 22px;color:#222;}
+.rhead{background:#111;color:#fff;padding:16px 20px;margin:-24px -22px 20px;}
+.rhead h4{color:#fff;font-size:17px;margin:0;font-weight:700;}
+.rhead .wk{color:#bbb;font-size:12px;margin-top:4px;}
+.edito{font-size:13.5px;color:#333;line-height:1.6;border-left:3px solid #C0392B;padding-left:14px;margin-bottom:22px;}
+.edito .t{display:block;color:#C0392B;font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.art{border-top:1px solid #eee;padding-top:16px;margin-top:16px;}
+.art:first-of-type{border-top:none;padding-top:0;margin-top:0;}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;align-items:center;}
+.tag-cat{font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.5px;}
+.tag-sig{font-size:10px;font-weight:700;color:#1B6EF2;border:1px solid #1B6EF2;border-radius:4px;padding:2px 6px;text-transform:uppercase;letter-spacing:.5px;}
+.src{font-size:12px;color:#888;margin-bottom:4px;}
+.art h5{color:#12305C;font-size:15.5px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.art p{color:#444;font-size:13.5px;margin-bottom:10px;}
+.kpts{background:#F5F6F8;border-radius:8px;padding:12px 14px;margin-bottom:8px;}
+.kpts .kt{font-size:10px;font-weight:700;color:#C0392B;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.kpts li{list-style:none;font-size:13px;color:#333;padding-left:16px;position:relative;margin-bottom:4px;}
+.kpts li:before{content:"›";position:absolute;left:0;color:#C0392B;font-weight:700;}
+.readmore{color:#1B6EF2;font-size:12.5px;font-weight:600;text-decoration:none;}
+.rnote{text-align:center;color:var(--muted);font-size:13px;margin-top:18px;font-style:italic;}
 
-/* ===== Étapes 01/02/03 ===== */
-.rdx-steps { margin-top:44px; display:grid; gap:36px; }
-.rdx-step-num {
-  font-size:52px;
-  font-weight:700;
-  color:#F26522;
-  line-height:1;
-  margin-bottom:12px;
-}
-.rdx-step h3 { font-size:18px; font-weight:600; margin-bottom:10px; color:#FFFFFF; }
-.rdx-step p { color:#A0B4CC; font-size:15px; }
+/* PREUVE */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;}
+.quote{background:var(--navy2);border:1px solid var(--line);border-left:3px solid var(--orange);border-radius:12px;padding:24px;}
+.quote p{color:var(--text);font-size:15.5px;font-style:italic;}
+.quote .who{color:var(--muted);font-size:13.5px;font-style:normal;margin-top:14px;display:block;}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;text-align:center;}
+.stat .big{font-size:38px;font-weight:800;color:var(--orange);line-height:1;}
+.stat .lbl{color:var(--muted);font-size:13.5px;margin-top:8px;}
 
-/* ===== Accordion rapport ===== */
-.rdx-mail-body {
-  background:#FFFFFF;
-  padding:0;
-  min-height:0;
-  overflow:hidden;
-  max-height:500px;
-  transition:max-height 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.rdx-mail-body.rdx-open {
-  max-height:3500px;
-}
-.rdx-report-toggle {
-  background:#FFFFFF;
-  padding:20px 24px;
-  border-bottom:2px solid #E8EDF2;
-  cursor:pointer;
-  user-select:none;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.rdx-report-toggle:hover {
-  background:#FAFAFA;
-}
-.rdx-toggle-label {
-  font-size:13px;
-  font-weight:600;
-  color:#333333;
-  margin:0;
-}
-.rdx-toggle-icon {
-  font-size:18px;
-  color:#C0392B;
-  transition:transform 0.3s ease;
-  flex:none;
-  margin-left:12px;
-}
-.rdx-mail-body.rdx-open .rdx-toggle-icon {
-  transform:rotate(180deg);
-}
-.rdx-report-content {
-  padding:20px 24px;
-}
+/* POUR QUI */
+.forwho{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:32px;}
+.fw{background:var(--navy);border:1px solid var(--line);border-radius:12px;padding:26px;}
+.fw h3{color:var(--text);}
+.fw li{list-style:none;font-size:15px;color:var(--muted);padding-left:26px;position:relative;margin-bottom:12px;line-height:1.4;}
+.fw.yes li:before{content:"✓";position:absolute;left:0;color:#27c93f;font-weight:700;}
+.fw.no li:before{content:"✕";position:absolute;left:0;color:#E24;font-weight:700;}
 
-/* ===== Témoignages ===== */
-.rdx-quote-main {
-  border-left:3px solid #F26522;
-  padding:8px 0 8px 24px;
-  margin-top:36px;
-}
-.rdx-quote-main p {
-  font-size:19px;
-  font-weight:500;
-  line-height:1.55;
-  color:#FFFFFF;
-}
-.rdx-quote-sec {
-  border-left:3px solid #4A6FA5;
-  padding:6px 0 6px 24px;
-  margin-top:32px;
-}
-.rdx-quote-sec p { font-size:15px; color:#A0B4CC; line-height:1.6; }
-.rdx-attrib { display:block; margin-top:14px; font-size:14px; color:#7EB8E0; font-weight:500; }
+/* INVEST + FINAL */
+.price-note{color:var(--muted);font-size:13px;font-style:italic;margin-top:14px;}
+.final-note{color:var(--muted);font-size:13.5px;margin-top:16px;}
+.footer{text-align:center;padding:34px 0;color:var(--muted);font-size:13px;border-bottom:none;}
 
-/* ===== Bandeau chiffres ===== */
-.rdx-stats {
-  margin-top:52px;
-  display:grid;
-  gap:32px;
-  border-top:1px solid rgba(74,111,165,0.35);
-  padding-top:44px;
-}
-.rdx-stat { text-align:center; }
-.rdx-stat strong {
-  display:block;
-  font-size:42px;
-  font-weight:700;
-  color:#F26522;
-  line-height:1.1;
-  margin-bottom:8px;
-}
-.rdx-stat span { color:#A0B4CC; font-size:14px; display:block; max-width:260px; margin:0 auto; }
-
-/* ===== Pour qui ===== */
-.rdx-fit { margin-top:40px; display:grid; gap:32px; }
-.rdx-fit-col {
-  background:rgba(15,27,51,0.6);
-  border:1px solid rgba(74,111,165,0.3);
-  border-radius:12px;
-  padding:28px 24px;
-}
-.rdx-fit-col h3 { font-size:17px; font-weight:600; margin-bottom:18px; color:#FFFFFF; }
-.rdx-fit-col ul { list-style:none; }
-.rdx-fit-col li {
-  color:#A0B4CC;
-  font-size:15px;
-  padding-left:30px;
-  position:relative;
-  margin-bottom:14px;
-}
-.rdx-fit-col li:last-child { margin-bottom:0; }
-.rdx-fit-col li::before {
-  position:absolute;
-  left:0;
-  top:0;
-  font-weight:700;
-  font-size:15px;
-}
-.rdx-fit-yes li::before { content:"\2713"; color:#3FCB8E; }
-.rdx-fit-no li::before { content:"\2715"; color:#E05555; }
-
-/* ===== Tarification ===== */
-.rdx-price-note {
-  color:#A0B4CC;
-  font-size:12.5px;
-  font-style:italic;
-  margin-top:22px;
-}
-
-/* ===== CTA final ===== */
-.rdx-final { padding:88px 22px; }
-.rdx-final-note { color:#A0B4CC; font-size:13px; margin-top:18px; }
-
-/* ===== Footer ===== */
-.rdx-footer {
-  padding:28px 22px 40px;
-  text-align:center;
-  color:#4A6FA5;
-  font-size:13px;
-  border-top:1px solid rgba(74,111,165,0.2);
-}
-
-/* ===== RAPPORT INTÉGRÉ — Reproduction fidèle du rapport client ===== */
-.rdx-report {
-  font-family:'Poppins', sans-serif;
-  color:#333333;
-  background:#FFFFFF;
-  text-align:left;
-}
-/* En-tête : bandeau noir */
-.rdx-report-header {
-  background:#1A1A1A;
-  margin:-28px -24px 24px;
-  padding:22px 24px;
-}
-.rdx-report-header h4 {
-  font-size:18px;
-  font-weight:700;
-  color:#FFFFFF;
-  margin:0;
-  letter-spacing:0.3px;
-}
-/* Édito */
-.rdx-report-edito {
-  margin-bottom:8px;
-  padding-bottom:20px;
-}
-.rdx-report-edito h5 {
-  font-size:10px;
-  font-weight:700;
-  color:#C0392B;
-  margin:0 0 10px 0;
-  text-transform:uppercase;
-  letter-spacing:1.5px;
-}
-.rdx-report-edito p {
-  font-size:13px;
-  line-height:1.6;
-  color:#444444;
-  font-style:italic;
-  margin:0;
-}
-/* Chaque article = une carte, séparée par un filet rouge en haut */
-.rdx-article {
-  border-top:2px solid #C0392B;
-  padding:16px 0 22px;
-}
-.rdx-article-tags {
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:10px;
-}
-.rdx-article-cat {
-  font-size:9.5px;
-  font-weight:600;
-  color:#888888;
-  text-transform:uppercase;
-  letter-spacing:0.8px;
-}
-.rdx-article-badge {
-  font-size:9px;
-  font-weight:600;
-  color:#2C5AA0;
-  text-transform:uppercase;
-  letter-spacing:0.5px;
-  border:1px solid #2C5AA0;
-  border-radius:3px;
-  padding:2px 7px;
-  white-space:nowrap;
-}
-.rdx-article-source {
-  font-size:11px;
-  color:#999999;
-  font-weight:400;
-  margin:0 0 6px 0;
-}
-.rdx-article-title {
-  font-size:15px;
-  font-weight:700;
-  margin:0 0 10px 0;
-  line-height:1.35;
-}
-.rdx-article-title a {
-  color:#1B4F8A;
-  text-decoration:none;
-}
-.rdx-article-title a:hover { text-decoration:underline; }
-.rdx-article-body {
-  font-size:13px;
-  line-height:1.55;
-  color:#444444;
-  margin:0 0 14px 0;
-}
-/* Encadré gris "points clés" */
-.rdx-article-points-box {
-  background:#F5F5F5;
-  border-radius:6px;
-  padding:14px 16px;
-  margin-bottom:12px;
-}
-.rdx-points-label {
-  font-size:9.5px;
-  font-weight:700;
-  color:#666666;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  margin:0 0 8px 0;
-}
-.rdx-article-points {
-  list-style:none;
-  margin:0;
-  padding:0;
-}
-.rdx-article-points li {
-  font-size:12.5px;
-  color:#444444;
-  line-height:1.5;
-  margin-bottom:6px;
-  padding-left:16px;
-  position:relative;
-}
-.rdx-article-points li:last-child { margin-bottom:0; }
-.rdx-article-points li:before {
-  content:"\203A";
-  position:absolute;
-  left:2px;
-  color:#C0392B;
-  font-weight:bold;
-}
-/* Lien "lire la source" */
-.rdx-article-link {
-  text-align:right;
-}
-.rdx-article-link a {
-  font-size:11px;
-  font-weight:600;
-  color:#C0392B;
-  text-transform:uppercase;
-  letter-spacing:0.5px;
-  text-decoration:none;
-}
-.rdx-article-link a:hover { text-decoration:underline; }
-/* Footer du rapport */
-.rdx-report-footer {
-  background:#FDECEA;
-  border-radius:6px;
-  padding:16px 18px;
-  margin-top:8px;
-}
-.rdx-report-footer .rdx-footer-label {
-  font-size:10px;
-  font-weight:700;
-  color:#C0392B;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  margin:0 0 8px 0;
-}
-.rdx-report-footer p {
-  font-size:12.5px;
-  color:#444444;
-  line-height:1.55;
-  margin:0;
-}
-.rdx-report-signature {
-  text-align:center;
-  font-size:10px;
-  color:#AAAAAA;
-  margin-top:18px;
-}
-
-/* ===== Animations (révélation au scroll) ===== */
-.rdx-reveal { opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease; }
-.rdx-reveal.rdx-visible { opacity:1; transform:translateY(0); }
-@media (prefers-reduced-motion: reduce) {
-  .rdx-reveal { opacity:1; transform:none; transition:none; }
-  .rdx-btn { transition:none; }
-}
-
-/* ===== Desktop ===== */
-@media (min-width: 768px) {
-  .rdx-section { padding:96px 32px; }
-  .rdx-hero { padding:128px 32px 136px; }
-  .rdx-h1 { font-size:44px; }
-  .rdx-h2 { font-size:32px; }
-  .rdx-sub { font-size:17px; }
-  .rdx-problems { grid-template-columns:repeat(3,1fr); gap:32px; }
-  .rdx-steps { grid-template-columns:repeat(3,1fr); gap:40px; }
-  .rdx-stats { grid-template-columns:repeat(3,1fr); }
-  .rdx-fit { grid-template-columns:repeat(2,1fr); }
+@media(max-width:760px){
+  .grid3,.probs,.quotes,.stats,.forwho,.profiles{grid-template-columns:1fr;}
+  section{padding:48px 0;}
+  .hero{padding:64px 0 54px;}
 }
 </style>
+</head>
+<body>
 
-<div class="rdx-page">
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="tagline">Radar IA : veille de marché sur-mesure</div>
+    <h1>Les signaux faibles de votre marché, <span class="hl">sur votre bureau chaque lundi.</span></h1>
+    <p class="lead">Pour les professionnels qui doivent maîtriser l'actualité de leur secteur : un agent de veille automatisé surveille vos sources en continu, filtre le bruit, et vous livre chaque semaine un rapport synthétique, analysé et sourcé, directement dans votre boîte mail. Avant que l'info ne devienne l'actualité de tout le monde.</p>
+    <a class="btn" href="https://calendly.com/delphine-pellas/30min" target="_blank" rel="noopener noreferrer">Réserver un appel découverte</a>
+  </div>
+</header>
 
-  <!-- ===== SECTION 1 — HERO ===== -->
-  <section class="rdx-section rdx-hero rdx-dots">
-    <div class="rdx-inner">
-      <span class="rdx-eyebrow">Radar IA — Veille de marché sur-mesure</span>
-      <h1 class="rdx-h1">Les signaux que vos concurrents verront dans 3 semaines, <em>vous les avez lundi matin.</em></h1>
-      <p class="rdx-sub">Pour les professionnels qui doivent maîtriser l'actualité de leur secteur&nbsp;: un agent de veille automatisé surveille vos sources en continu, filtre le bruit, et vous livre chaque semaine un rapport synthétique, analysé et sourcé — directement dans votre boîte mail.</p>
-      <a class="rdx-btn" href="https://calendly.com/delphine-pellas/30min" target="_blank" rel="noopener noreferrer">Réserver un appel découverte</a>
+<!-- PROBLEME -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Le problème</div>
+    <h2>Les décisions se prennent avec les infos que vous n'avez pas le temps d'aller chercher.</h2>
+    <div class="probs">
+      <div class="prob"><p>Vous passez des heures à scanner LinkedIn, la presse spécialisée, X, des newsletters étrangères, et vous savez que vous ratez des choses.</p></div>
+      <div class="prob"><p>Quand une tendance arrive dans les médias grand public, tout le monde l'a déjà. Elle ne vaut plus rien pour décider ou publier en premier.</p></div>
+      <div class="prob"><p>Google Alerts vous noie sous le bruit. ChatGPT donne des réponses génériques. Aucun ne connaît vos sources, vos angles, votre secteur.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== SECTION 2 — LE PROBLÈME ===== -->
-  <section class="rdx-section rdx-alt">
-    <div class="rdx-inner">
-      <span class="rdx-eyebrow">Le problème</span>
-      <h2 class="rdx-h2 rdx-reveal">Votre crédibilité repose sur des infos que vous n'avez pas le temps de chercher.</h2>
-      <div class="rdx-problems">
-        <div class="rdx-problem rdx-reveal">Vous passez des heures à scanner LinkedIn, la presse spécialisée, X, des newsletters étrangères — et vous savez que vous ratez des choses.</div>
-        <div class="rdx-problem rdx-reveal">Quand une tendance arrive dans les médias grand public, tout le monde l'a déjà. Elle ne vaut plus rien pour décider — ou publier — en premier.</div>
-        <div class="rdx-problem rdx-reveal">Google Alerts vous noie sous le bruit. ChatGPT vous donne des réponses génériques. Aucun des deux ne connaît vos sources, vos angles, votre secteur.</div>
+<!-- COMMENT CA MARCHE -->
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Comment ça marche</div>
+    <h2>De la configuration au premier rapport : 10 jours.</h2>
+    <div class="grid3">
+      <div class="card">
+        <div class="step-num">01</div>
+        <h3>On définit votre périmètre</h3>
+        <p>En un appel de 30 minutes, on identifie vos thématiques prioritaires, vos sources de référence et les signaux faibles que vous voulez capter. Je configure l'agent sur-mesure.</p>
+      </div>
+      <div class="card">
+        <div class="step-num">02</div>
+        <h3>L'agent scanne, recoupe et analyse</h3>
+        <p>Chaque semaine, il passe au crible des dizaines de sources spécialisées : presse sectorielle, Substacks, blogs indépendants, presse étrangère. Il produit une analyse structurée de chaque signal détecté.</p>
+      </div>
+      <div class="card">
+        <div class="step-num">03</div>
+        <h3>Vous recevez un rapport prêt à exploiter</h3>
+        <p>Un email structuré : édito, articles sélectionnés, chacun avec une analyse synthétique et son lien source. 3 à 5 minutes de lecture. Vous décidez quoi en faire.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== SECTION 3 — COMMENT ÇA MARCHE ===== -->
-  <section class="rdx-section">
-    <div class="rdx-inner">
-      <span class="rdx-eyebrow">Comment ça marche</span>
-      <h2 class="rdx-h2 rdx-reveal">De la configuration au premier rapport&nbsp;: 10&nbsp;jours.</h2>
-      <div class="rdx-steps">
-        <div class="rdx-step rdx-reveal">
-          <div class="rdx-step-num">01</div>
-          <h3>On définit votre périmètre</h3>
-          <p>En un appel de 30 minutes, on identifie vos thématiques prioritaires, vos sources de référence, et les signaux faibles que vous voulez capter. Je configure l'agent sur-mesure.</p>
-        </div>
-        <div class="rdx-step rdx-reveal">
-          <div class="rdx-step-num">02</div>
-          <h3>L'agent scanne, recoupe et analyse</h3>
-          <p>Chaque semaine, il passe au crible des dizaines de sources spécialisées — presse sectorielle, Substacks, blogs indépendants, presse étrangère — et produit une analyse structurée de chaque signal détecté.</p>
-        </div>
-        <div class="rdx-step rdx-reveal">
-          <div class="rdx-step-num">03</div>
-          <h3>Vous recevez un rapport prêt à exploiter</h3>
-          <p>Un email structuré&nbsp;: édito, 8 à 12 articles sélectionnés, chacun avec une analyse synthétique et son lien source. 3 à 5 minutes de lecture. Vous décidez quoi en faire — publication, veille stratégique, prise de décision.</p>
-        </div>
+<!-- PROFILS / TYPES DE VEILLE -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Quels que soient votre métier et votre taille</div>
+    <h2>Il y a des signaux que vous ne pouvez pas vous permettre de rater.</h2>
+    <p class="lead" style="max-width:680px;">Le radar se configure selon les signaux qui comptent pour vous. Quelques exemples selon votre profil :</p>
+    <div class="profiles">
+      <div class="profile">
+        <h3>Consultant, expert, média B2B</h3>
+        <p class="sig"><b>Actualité métier, tendances émergentes, signaux faibles sectoriels</b> pour garder une longueur d'avance sur ce que vous publiez ou conseillez.</p>
+      </div>
+      <div class="profile">
+        <h3>Solopreneur, indépendant</h3>
+        <p class="sig"><b>Mouvements des concurrents, signaux d'affaires, tendances de votre marché</b> pour contacter le bon prospect au bon moment et ne pas vous faire dépasser.</p>
+      </div>
+      <div class="profile">
+        <h3>Startup</h3>
+        <p class="sig"><b>Levées de fonds concurrentes, ruptures technologiques, nouveaux entrants</b> pour piloter votre positionnement dans un marché qui bouge vite.</p>
+      </div>
+      <div class="profile">
+        <h3>PME</h3>
+        <p class="sig"><b>Concurrence, appels d'offres, évolutions réglementaires, e-réputation</b> pour anticiper les mouvements de votre marché et sécuriser votre activité.</p>
+      </div>
+      <div class="profile">
+        <h3>Direction, ETI</h3>
+        <p class="sig"><b>Réglementaire, marché, fournisseurs à risque, RH du secteur.</b> Un radar sur-mesure en complément de vos outils, ciblé sur vos angles morts.</p>
+      </div>
+      <div class="profile">
+        <h3>Votre secteur n'est pas listé ?</h3>
+        <p class="sig">Chaque radar est construit à partir de vos sources et de vos priorités. Si l'information existe sur le web, elle est surveillable. On en parle en 30 minutes.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== SECTION 4 — APERÇU DU RAPPORT ===== -->
-  <section class="rdx-section rdx-alt rdx-dots">
-    <div class="rdx-inner rdx-center">
-      <span class="rdx-eyebrow">À quoi ressemble votre rapport</span>
-      <h2 class="rdx-h2 rdx-reveal">Un vrai rapport livré à un vrai client. Pas une maquette.</h2>
-      <div class="rdx-mail rdx-reveal">
-        <div class="rdx-mail-bar">
-          <div class="rdx-mail-dot rdx-mail-dot--r"></div>
-          <div class="rdx-mail-dot rdx-mail-dot--y"></div>
-          <div class="rdx-mail-dot rdx-mail-dot--g"></div>
-          <span>Boîte de réception — Votre rapport Radar IA</span>
-        </div>
-        <div class="rdx-mail-body" id="rdx-report-body">
-          <div class="rdx-report-toggle" id="rdx-report-toggle">
-            <p class="rdx-toggle-label">Voir le rapport complet</p>
-            <span class="rdx-toggle-icon">›</span>
+<!-- RAPPORT -->
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow center">À quoi ressemble votre rapport</div>
+    <h2 class="center">Un vrai rapport livré à un vrai client. Pas une maquette.</h2>
+    <div class="mail">
+      <div class="mail-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="mail-sub">Boîte de réception · Votre rapport Radar IA</span>
+      </div>
+      <div class="toggle open" id="toggle">
+        <span class="toggle-label">Masquer l'extrait</span>
+        <span class="toggle-ico">▾</span>
+      </div>
+      <div class="rbody open" id="rbody">
+        <div class="rin">
+          <div class="rhead">
+            <h4>Rapport de veille retail</h4>
+            <div class="wk">Semaine du 24/09/2026</div>
           </div>
-          <div class="rdx-report-content">
-          <div class="rdx-report">
-            <div class="rdx-report-header">
-              <h4>Rapport de veille retail</h4>
-            </div>
 
-            <div class="rdx-report-edito">
-              <h5>Point de la semaine</h5>
-              <p>Hyper-accélération de la livraison express aux États-Unis : Walmart couvre déjà 60% du pays en moins de 30 minutes, posant de nouveaux standards logistiques. Sur le marché français, les GMS doivent anticiper l'impact d'une potentielle loi sur le panier à prix coûtant et saisir les opportunités induites par la résilience des achats physiques durant les canicules. À noter l'émergence de formats hybrides et serviciels — snacking premium, corners santé, expérientiel local — qui préfigurent les prochaines évolutions de l'offre française.</p>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">Retail international — US, UK, Europe, Asie</span>
-                <span class="rdx-article-badge">Papier optim</span>
-              </div>
-              <p class="rdx-article-source">Winsight Grocery Business</p>
-              <h5 class="rdx-article-title"><a href="https://www.supermarketnews.com/company-news/walmart-calls-them-depots-and-they-put-speed-into-delivery" target="_blank" rel="noopener noreferrer">Walmart muscle la livraison avec ses « depots » : 60% de la population couverte en 30 minutes</a></h5>
-              <p class="rdx-article-body">Walmart transforme d'anciens magasins en « depots » logistiques pour livrer 60% des Américains en moins de 30 minutes. Cette stratégie accélère la concurrence sur l'ultra-fast delivery, un modèle qui pourrait bientôt inspirer la GMS française.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Transformation de surfaces commerciales en hubs logistiques express</li>
-                  <li>Cible : 60% de la population US livrée en 30 minutes</li>
-                  <li>Benchmark logistique direct pour la GMS française sur l'ultra-proximité</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.supermarketnews.com/company-news/walmart-calls-them-depots-and-they-put-speed-into-delivery" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">Retail international — US, UK, Europe, Asie</span>
-                <span class="rdx-article-badge">Papier optim</span>
-              </div>
-              <p class="rdx-article-source">Winsight Grocery Business</p>
-              <h5 class="rdx-article-title"><a href="https://www.supermarketnews.com/grocery-operations/walmart-makes-the-next-move-to-match-delivery-with-amazon" target="_blank" rel="noopener noreferrer">Walmart vise 95% des foyers US livrés dans la journée, en réaction à Amazon</a></h5>
-              <p class="rdx-article-body">Walmart relève la barre du service express en promettant 95% des foyers américains livrés en moins de 3 heures, en réaction aux offensives d'Amazon sur ce créneau. Cette montée en puissance donne le tempo pour un secteur alimentaire en mutation rapide.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Objectif : 95% des foyers livrés en 3h</li>
-                  <li>Réplique anticipée à la nouvelle offre d'Amazon</li>
-                  <li>Pression sur la performance délais pour la GMS européenne d'ici 12-18 mois</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.supermarketnews.com/grocery-operations/walmart-makes-the-next-move-to-match-delivery-with-amazon" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">Retail international — US, UK, Europe, Asie</span>
-                <span class="rdx-article-badge">Papier optim</span>
-              </div>
-              <p class="rdx-article-source">Winsight Grocery Business</p>
-              <h5 class="rdx-article-title"><a href="https://www.supermarketnews.com/grocery-technology/nyc-considers-regulating-self-checkout" target="_blank" rel="noopener noreferrer">NYC : bientôt une limite anti-pagaille sur le self-checkout ?</a></h5>
-              <p class="rdx-article-body">Un projet de loi à New York envisage un plafond de 15 articles en caisse automatique et une supervision humaine accrue, afin de réduire les fraudes et files d'attente. Il s'agit d'un possible référentiel pour un futur cadre réglementaire en Europe.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Limitation envisagée : 15 articles en self-checkout à NYC</li>
-                  <li>Prévention fraudes et files, présence humaine obligatoire</li>
-                  <li>Anticipe de potentielles régulations françaises/UE sur l'automatisation magasin</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.supermarketnews.com/grocery-technology/nyc-considers-regulating-self-checkout" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">Retail international — US, UK, Europe, Asie</span>
-                <span class="rdx-article-badge">Papier optim</span>
-              </div>
-              <p class="rdx-article-source">Winsight Grocery Business</p>
-              <h5 class="rdx-article-title"><a href="https://www.supermarketnews.com/executive-moves/lidl-us-has-a-new-ceo" target="_blank" rel="noopener noreferrer">Lidl US change de patron : Alan Barry nommé CEO pour affronter la concurrence</a></h5>
-              <p class="rdx-article-body">Lidl US nomme Alan Barry (ex-COO) au poste de CEO afin de relancer sa stratégie sur un marché américain ultra-concurrentiel. Cette décision marque la volonté des groupes européens de réajuster leur pilotage sur des marchés complexes.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Arrivée d'Alan Barry à la tête de Lidl US</li>
-                  <li>Objectif : adapter l'offre et la stratégie face aux concurrents locaux</li>
-                  <li>À surveiller : répercussions sur la stratégie internationale des groupes GMS européens</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.supermarketnews.com/executive-moves/lidl-us-has-a-new-ceo" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">Nouveaux concepts retail & catégories émergentes</span>
-                <span class="rdx-article-badge">Papier optim</span>
-              </div>
-              <p class="rdx-article-source">RetailDetail</p>
-              <h5 class="rdx-article-title"><a href="https://www.retaildetail.eu/news/food/e-leclerc-corner-bien-etre-sante-hypermarches-pilotes" target="_blank" rel="noopener noreferrer">E.Leclerc introduit un corner bien-être & santé inédit en hypermarché</a></h5>
-              <p class="rdx-article-body">E.Leclerc teste des corners santé/bien-être réunissant pharmacie, produits naturels et conseils personnalisés en shop-in-shop. L'innovation cible la montée des besoins santé et la premiumisation des rayons en GMS.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Shop-in-shop multiproduits santé/bien-être testé en GMS</li>
-                  <li>Accent sur la naturalité et le conseil en rayon</li>
-                  <li>Préfigure l'hybridation à venir des formats GMS généralistes</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.retaildetail.eu/news/food/e-leclerc-corner-bien-etre-sante-hypermarches-pilotes" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">Nouveaux concepts retail & catégories émergentes</span>
-                <span class="rdx-article-badge">Papier optim</span>
-              </div>
-              <p class="rdx-article-source">RetailDetail</p>
-              <h5 class="rdx-article-title"><a href="https://www.retaildetail.eu/news/food/carrefour-convenience-store-nouvelle-generation-snacking-premium" target="_blank" rel="noopener noreferrer">Carrefour lance son convenience store nouvelle génération axé snacking premium</a></h5>
-              <p class="rdx-article-body">Carrefour teste un format convenience urbain premium, centré sur le snacking, les boissons fraîches et le foodservice MDD, intégrant parcours optimisé et offres élargies, entre retail, coffee shop et restauration rapide.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Ouverture de formats foodservice/retail hybrides snacking premium</li>
-                  <li>Montée en gamme de la MDD convenience</li>
-                  <li>Inspiration potentielle pour les projets de proximité urbains GMS</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.retaildetail.eu/news/food/carrefour-convenience-store-nouvelle-generation-snacking-premium" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">Nouveaux concepts retail & catégories émergentes</span>
-                <span class="rdx-article-badge">Papier optim</span>
-              </div>
-              <p class="rdx-article-source">RetailDetail</p>
-              <h5 class="rdx-article-title"><a href="https://www.retaildetail.eu/news/food/auchan-reconversion-dark-stores-magasins-experientiels-local-durable" target="_blank" rel="noopener noreferrer">Auchan transforme d'anciens dark stores en magasins expérientiels locaux et durables</a></h5>
-              <p class="rdx-article-body">Auchan reconvertit ses dark stores urbains en magasins axés local, vrac et anti-gaspi, animés par événements et magasins pilotes. La démarche hybride e-commerce/physique capitalise sur le lien territoire-consommateur et la circularité.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Transformation dark store en retail local expérientiel & résilient</li>
-                  <li>Offres vrac, anti-gaspi et événements de proximité</li>
-                  <li>Nouveau modèle de valorisation des anciens entrepôts urbains</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.retaildetail.eu/news/food/auchan-reconversion-dark-stores-magasins-experientiels-local-durable" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">Nouveaux concepts retail & catégories émergentes</span>
-                <span class="rdx-article-badge">Papier optim</span>
-              </div>
-              <p class="rdx-article-source">RetailDetail</p>
-              <h5 class="rdx-article-title"><a href="https://www.retaildetail.eu/news/food/intermarche-concept-store-alimentaire-corner-petfood-premium-beaute-gms" target="_blank" rel="noopener noreferrer">Intermarché lance un concept store avec corners petfood premium & beauté GMS</a></h5>
-              <p class="rdx-article-body">Intermarché expérimente un store alimentaire où cohabitent corner petfood premium, zone beauté revisitée et merchandising inspiré du commerce sélectif, cherchant à capter des segments à forte marge souvent sous-exploités en GMS.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Mise en avant petfood/beauté à forte valeur sur-mesure</li>
-                  <li>Merchandising immersif et différenciant</li>
-                  <li>Possible relance de marge sur des segments en croissance</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.retaildetail.eu/news/food/intermarche-concept-store-alimentaire-corner-petfood-premium-beaute-gms" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">RH, management & métiers grande distribution</span>
-                <span class="rdx-article-badge">Papier optim</span>
-              </div>
-              <p class="rdx-article-source">Welcome to the Jungle — Carrefour</p>
-              <h5 class="rdx-article-title"><a href="https://www.welcometothejungle.com/fr/companies/carrefour/jobs/alternant-direction-amenagement-format-hyper-h-f_evry" target="_blank" rel="noopener noreferrer">Carrefour crée un poste d'alternant en Direction Aménagement Hyper</a></h5>
-              <p class="rdx-article-body">Carrefour crée un poste d'alternant pour renforcer la direction aménagement de ses hypermarchés, visant la structuration des fonctions supports, l'amélioration du cadre de travail magasin et l'optimisation opérationnelle.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Nouveau poste dédié à l'accompagnement et l'organisation hyper</li>
-                  <li>Renforcement du lien supports terrain et équipes commerçantes</li>
-                  <li>Tendance à la spécialisation RH au service de la performance magasin</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.welcometothejungle.com/fr/companies/carrefour/jobs/alternant-direction-amenagement-format-hyper-h-f_evry" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">RH, management & métiers grande distribution</span>
-                <span class="rdx-article-badge">Papier optim</span>
-              </div>
-              <p class="rdx-article-source">Welcome to the Jungle — Auchan</p>
-              <h5 class="rdx-article-title"><a href="https://www.welcometothejungle.com/fr/companies/auchan/jobs/equipier-de-commerce-n4-adjoint-au-manager-f-h_marcoussis" target="_blank" rel="noopener noreferrer">Auchan multiplie les postes d'adjoints au manager de rayon pour un management de proximité</a></h5>
-              <p class="rdx-article-body">Auchan crée des postes d'adjoints au manager de rayon pour renforcer l'encadrement intermédiaire, favoriser la progression interne et répartir les responsabilités dans les équipes magasin.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Création de postes intermédiaires de management en magasin</li>
-                  <li>Accent sur l'évolution métiers et la gestion fluide des équipes terrain</li>
-                  <li>Optimisation de la performance et de l'attractivité RH GMS</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.welcometothejungle.com/fr/companies/auchan/jobs/equipier-de-commerce-n4-adjoint-au-manager-f-h_marcoussis" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">Tendances conso & nouveaux comportements d'achat</span>
-                <span class="rdx-article-badge">Grand public</span>
-              </div>
-              <p class="rdx-article-source">Le Monde</p>
-              <h5 class="rdx-article-title"><a href="https://www.lemonde.fr/planete/live/2026/07/10/en-direct-canicule-sebastien-lecornu-a-preside-une-cellule-interministerielle-de-crise-un-nouveau-plan-orsec-chaleurs-extremes-mis-en-place-dans-les-departements-en-vigilance-rouge_6720911_3244.html" target="_blank" rel="noopener noreferrer">Livraisons Uber Eats et Deliveroo suspendues lors des canicules extrêmes</a></h5>
-              <p class="rdx-article-body">Uber Eats et Deliveroo suspendent les livraisons durant les pics de canicule, mettant en lumière la vulnérabilité du quick commerce face au climat. Opportunité temporaire pour la GMS d'affirmer la fiabilité du magasin physique et du drive.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Arrêt total des livraisons de 14h à 18h lors d'alertes rouges</li>
-                  <li>Fragilité du quick commerce en cas de climat extrême</li>
-                  <li>Crée une fenêtre pour innover sur les services GMS accès urgence/canicule</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.lemonde.fr/planete/live/2026/07/10/en-direct-canicule-sebastien-lecornu-a-preside-une-cellule-interministerielle-de-crise-un-nouveau-plan-orsec-chaleurs-extremes-mis-en-place-dans-les-departements-en-vigilance-rouge_6720911_3244.html" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-article">
-              <div class="rdx-article-tags">
-                <span class="rdx-article-cat">Tendances conso & nouveaux comportements d'achat</span>
-                <span class="rdx-article-badge">Grand public</span>
-              </div>
-              <p class="rdx-article-source">Le Monde</p>
-              <h5 class="rdx-article-title"><a href="https://www.lemonde.fr/societe/article/2026/07/03/canicule-de-juin-les-deces-ont-augmente-de-presque-30-selon-sante-publique-france_6718477_3224.html" target="_blank" rel="noopener noreferrer">Canicule de juin : surmortalité record et poussée de la prévention alimentaire</a></h5>
-              <p class="rdx-article-body">La canicule de juin a généré une surmortalité record (+30%) et fait émerger des attentes accrues sur l'alimentaire santé, l'hydratation et la prévention en GMS. La réactivité des rayons et l'adaptation des communications deviennent prioritaires.</p>
-              <div class="rdx-article-points-box">
-                <p class="rdx-points-label">Points clés</p>
-                <ul class="rdx-article-points">
-                  <li>Surmortalité +30% en France, +62% en Île-de-France</li>
-                  <li>Pic de demande sur hydratation, fonctionnels, segment senior</li>
-                  <li>Renforcer la rapidité d'adaptation des assortiments & la communication santé en magasin</li>
-                </ul>
-              </div>
-              <div class="rdx-article-link"><a href="https://www.lemonde.fr/societe/article/2026/07/03/canicule-de-juin-les-deces-ont-augmente-de-presque-30-selon-sante-publique-france_6718477_3224.html" target="_blank" rel="noopener noreferrer">Lire la source ›</a></div>
-            </div>
-
-            <div class="rdx-report-footer">
-              <p class="rdx-footer-label">À surveiller la semaine prochaine</p>
-              <p>Éventuelle arrivée d'initiatives ultra-fast delivery urbaines en Europe et adaptation réglementaire du self-checkout à suivre de près.</p>
-            </div>
-
-            <p class="rdx-report-signature">Rapport généré automatiquement</p>
+          <div class="edito">
+            <span class="t">Édito de la semaine</span>
+            Semaine dominée par l'accélération de l'IA agentique dans le retail US et la bascule du quick-commerce chinois vers la différenciation produit. Des signaux de rupture pour le métier en France dans les 18 mois.
           </div>
+
+          <div class="art">
+            <div class="tags"><span class="tag-sig">Signal faible</span><span class="tag-cat">IA agentique · Distribution internationale</span></div>
+            <div class="src">Grocery Dive</div>
+            <h5>Schnuck Markets : l'IA agentique révèle un enjeu de qualité data magasin</h5>
+            <p>Schnuck Markets (USA) déploie un assistant IA spécialisé sur les demandes clients. La performance repose sur la fraîcheur des données locales. Pour la France, la supériorité IA passera par l'exploitation des connaissances terrain.</p>
+            <div class="kpts">
+              <div class="kt">Points clés</div>
+              <ul>
+                <li>90 % des SKU en données syndiquées</li>
+                <li>Limite opérationnelle sur l'exhaustivité produits/horaires</li>
+                <li>Investir sur la data magasin = prérequis IA agentique en France</li>
+              </ul>
+            </div>
+            <a class="readmore" href="#" onclick="return false;">Lire la source →</a>
+          </div>
+
+          <div class="art">
+            <div class="tags"><span class="tag-sig">Signal faible</span><span class="tag-cat">Tendances internationales · Chine</span></div>
+            <div class="src">36Kr / 碧根果</div>
+            <h5>L'instant commerce chinois mise sur la différenciation produit</h5>
+            <p>En Chine, le quick-commerce bascule en croissance sur l'offre différenciée : +81 % grâce aux produits uniques ou premium, et non plus à la rapidité de livraison. Le positionnement produit devient le levier numéro un.</p>
+            <div class="kpts">
+              <div class="kt">Points clés</div>
+              <ul>
+                <li>1 193 Mds ¥ de marché, +48,3 % (2025)</li>
+                <li>81 % de la croissance portée par la différenciation produit</li>
+                <li>Pour la France : repenser le quick-commerce au-delà du service seul</li>
+              </ul>
+            </div>
+            <a class="readmore" href="#" onclick="return false;">Lire la source →</a>
+          </div>
+
+          <div class="art">
+            <div class="tags"><span class="tag-sig">Signal faible</span><span class="tag-cat">RH & management</span></div>
+            <div class="src">Philip Lempert's Substack</div>
+            <h5>Sous-effectif et erreurs de prix : vers une adoption accélérée des étiquettes électroniques ?</h5>
+            <p>Baisse de 10 % des effectifs magasin Kroger US depuis 2019, corrélée à une hausse des problèmes de fiabilité prix. Les étiquettes électroniques émergent comme réponse à la tension RH.</p>
+            <div class="kpts">
+              <div class="kt">Points clés</div>
+              <ul>
+                <li>Moins de personnel = hausse des erreurs de prix</li>
+                <li>Adoption des ESL pour garantir la synchronisation prix</li>
+                <li>Indicateur sensible à surveiller pour la GMS France</li>
+              </ul>
+            </div>
+            <a class="readmore" href="#" onclick="return false;">Lire la source →</a>
           </div>
         </div>
       </div>
-      <p class="rdx-mail-caption">Extrait d'un rapport réel livré chaque semaine. Thématiques, sources et fréquence adaptées à chaque client.</p>
     </div>
-  </section>
+    <p class="rnote">Extrait d'un rapport réel livré chaque semaine (secteur retail). Thématiques, sources et fréquence adaptées à chaque client, sur n'importe quel secteur.</p>
+  </div>
+</section>
 
-  <!-- ===== SECTION 5 — PREUVE SOCIALE ===== -->
-  <section class="rdx-section">
-    <div class="rdx-inner">
-      <span class="rdx-eyebrow">Ils l'utilisent déjà</span>
-      <blockquote class="rdx-quote-main rdx-reveal">
-        <p>«&nbsp;Je suis bluffé par la qualité de l'analyse. Ce n'est pas juste une liste de liens — chaque article est décrypté. Et j'accède à des informations que je n'aurais jamais trouvées manuellement.&nbsp;»</p>
-        <span class="rdx-attrib">— Jonathan Le Borgne, fondateur de Je Bosse en Grande Distribution (600&nbsp;000 abonnés)</span>
-      </blockquote>
-      <blockquote class="rdx-quote-sec rdx-reveal">
-        <p>«&nbsp;Je l'utilise pour suivre les évolutions technologiques de mon secteur — displays aéronautiques, nouveaux équipements, signaux réglementaires. C'est devenu un réflexe hebdomadaire.&nbsp;»</p>
-        <span class="rdx-attrib">— Directeur de site industriel, secteur aéronautique</span>
-      </blockquote>
-      <div class="rdx-stats">
-        <div class="rdx-stat rdx-reveal">
-          <strong>82&nbsp;%</strong>
-          <span>du contenu d'un rapport repris directement par le client dans ses publications</span>
-        </div>
-        <div class="rdx-stat rdx-reveal">
-          <strong>10&nbsp;jours</strong>
-          <span>entre le brief et le premier rapport</span>
-        </div>
-        <div class="rdx-stat rdx-reveal">
-          <strong>3–5&nbsp;min</strong>
-          <span>de lecture par rapport, pas une minute de plus</span>
-        </div>
+<!-- PREUVE -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Ils l'utilisent déjà</div>
+    <div class="quotes">
+      <div class="quote">
+        <p>« Je suis bluffé par la qualité de l'analyse. Ce n'est pas juste une liste de liens, chaque article est décrypté. Et j'accède à des informations que je n'aurais jamais trouvées manuellement. »</p>
+        <span class="who">Jonathan Le Borgne, fondateur de Je Bosse en Grande Distribution (600 000 abonnés)</span>
+      </div>
+      <div class="quote">
+        <p>« Je l'utilise pour suivre les évolutions technologiques de mon secteur : displays aéronautiques, nouveaux équipements, signaux réglementaires. C'est devenu un réflexe hebdomadaire. »</p>
+        <span class="who">Directeur de site industriel, secteur aéronautique</span>
       </div>
     </div>
-  </section>
+    <div class="stats">
+      <div class="stat"><div class="big">10 jours</div><div class="lbl">entre le brief et le premier rapport</div></div>
+      <div class="stat"><div class="big">1 / semaine</div><div class="lbl">un rapport livré directement dans votre boîte mail</div></div>
+      <div class="stat"><div class="big">3 à 5 min</div><div class="lbl">de lecture, pas une minute de plus</div></div>
+    </div>
+  </div>
+</section>
 
-  <!-- ===== SECTION 6 — POUR QUI ===== -->
-  <section class="rdx-section rdx-alt">
-    <div class="rdx-inner">
-      <span class="rdx-eyebrow">Pour qui</span>
-      <h2 class="rdx-h2 rdx-reveal">Radar IA est conçu pour les professionnels dont la crédibilité dépend de leur maîtrise de l'actualité sectorielle.</h2>
-      <div class="rdx-fit">
-        <div class="rdx-fit-col rdx-fit-yes rdx-reveal">
-          <h3>C'est fait pour vous si…</h3>
-          <ul>
-            <li>Vous publiez une newsletter, un podcast ou du contenu sectoriel régulier</li>
-            <li>Vous êtes consultant, analyste ou expert et vos clients attendent de vous une longueur d'avance</li>
-            <li>Vous dirigez une PME et vous devez anticiper les mouvements de votre marché</li>
-            <li>Vous perdez du temps à sourcer manuellement ce que vous devriez automatiser</li>
-          </ul>
-        </div>
-        <div class="rdx-fit-col rdx-fit-no rdx-reveal">
-          <h3>Ce n'est pas adapté si…</h3>
-          <ul>
-            <li>Vous avez déjà une équipe de veille structurée en interne</li>
-            <li>Votre besoin est ponctuel, pas récurrent</li>
-            <li>Vous cherchez un outil en self-service à configurer vous-même</li>
-          </ul>
-        </div>
+<!-- POUR QUI -->
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Pour qui</div>
+    <h2>Radar IA est conçu pour les professionnels qui doivent garder une longueur d'avance sur leur secteur.</h2>
+    <div class="forwho">
+      <div class="fw yes">
+        <h3>C'est fait pour vous si…</h3>
+        <ul>
+          <li>Vous publiez une newsletter, un podcast ou du contenu sectoriel régulier</li>
+          <li>Vous êtes consultant, analyste ou expert, et vos clients attendent de vous une longueur d'avance</li>
+          <li>Vous dirigez une PME ou une startup et devez anticiper les mouvements de votre marché</li>
+          <li>Vous perdez du temps à sourcer manuellement ce que vous devriez automatiser</li>
+        </ul>
+      </div>
+      <div class="fw no">
+        <h3>Ce n'est pas adapté si…</h3>
+        <ul>
+          <li>Vous avez déjà une équipe de veille structurée en interne</li>
+          <li>Votre besoin est ponctuel, pas récurrent</li>
+          <li>Vous cherchez un outil en self-service à configurer vous-même</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== SECTION 7 — TARIFICATION ===== -->
-  <section class="rdx-section">
-    <div class="rdx-inner rdx-center">
-      <span class="rdx-eyebrow">Investissement</span>
-      <h2 class="rdx-h2 rdx-reveal">Un tarif sur-mesure, indexé sur votre périmètre.</h2>
-      <p class="rdx-sub rdx-reveal">Le prix dépend du nombre de thématiques suivies et de la fréquence de livraison. Chaque Radar est configuré spécifiquement pour votre secteur, vos sources et vos priorités — il n'y a pas de formule standard.</p>
-      <p class="rdx-sub rdx-reveal" style="margin-top:16px;">Un appel de 30 minutes suffit pour cadrer votre besoin et vous donner une idée précise du tarif.</p>
-      <p class="rdx-price-note rdx-reveal">Frais de mise en service initial + abonnement mensuel. Engagement minimum 3 mois.</p>
-      <a class="rdx-btn" href="https://calendly.com/delphine-pellas/30min" target="_blank" rel="noopener noreferrer">Réserver un appel découverte</a>
-    </div>
-  </section>
+<!-- INVESTISSEMENT -->
+<section class="center">
+  <div class="wrap">
+    <div class="eyebrow">Investissement</div>
+    <h2>Un tarif sur-mesure, indexé sur votre périmètre.</h2>
+    <p class="lead" style="max-width:640px;margin:0 auto;">Le prix dépend du nombre de thématiques suivies et de la fréquence de livraison. Chaque radar est configuré spécifiquement pour votre secteur, vos sources et vos priorités. Il n'y a pas de formule standard.</p>
+    <p style="max-width:600px;margin:16px auto 0;">Un appel de 30 minutes suffit pour cadrer votre besoin et vous donner une idée précise du tarif.</p>
+    <p class="price-note">Frais de mise en service initial + abonnement mensuel. Engagement minimum 3 mois.</p>
+    <a class="btn" href="https://calendly.com/delphine-pellas/30min" target="_blank" rel="noopener noreferrer">Réserver un appel découverte</a>
+  </div>
+</section>
 
-  <!-- ===== SECTION 8 — CTA FINAL ===== -->
-  <section class="rdx-section rdx-final rdx-alt rdx-dots">
-    <div class="rdx-inner rdx-center">
-      <h2 class="rdx-h2 rdx-reveal">L'information qui compte ne vous attend pas.</h2>
-      <p class="rdx-sub rdx-reveal">Pendant que vous lisez cette page, vos concurrents ont peut-être déjà vu le signal que vous allez rater demain.</p>
-      <a class="rdx-btn" href="https://calendly.com/delphine-pellas/30min" target="_blank" rel="noopener noreferrer">Réserver un appel découverte</a>
-      <p class="rdx-final-note">30 minutes. Sans engagement. On regarde ensemble si ça a du sens pour votre activité.</p>
-    </div>
-  </section>
+<!-- CTA FINAL -->
+<section class="center alt">
+  <div class="wrap">
+    <h2>L'information qui compte ne vous attend pas.</h2>
+    <p class="lead" style="max-width:600px;margin:0 auto;">Pendant que vous lisez cette page, vos concurrents ont peut-être déjà vu le signal que vous allez rater demain.</p>
+    <a class="btn" href="https://calendly.com/delphine-pellas/30min" target="_blank" rel="noopener noreferrer">Réserver un appel découverte</a>
+    <p class="final-note">30 minutes. Sans engagement. On regarde ensemble si ça a du sens pour votre activité.</p>
+  </div>
+</section>
 
-  <!-- ===== FOOTER ===== -->
-  <div class="rdx-footer">Radar IA — par Delphine Pellas</div>
-
-</div>
+<div class="footer">Radar IA par Delphine Pellas</div>
 
 <script>
-(function () {
-  // Scroll reveal
-  var els = document.querySelectorAll('.rdx-reveal');
-  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    for (var i = 0; i < els.length; i++) { els[i].classList.add('rdx-visible'); }
-  } else {
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('rdx-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    for (var j = 0; j < els.length; j++) { obs.observe(els[j]); }
-  }
-  
-  // Rapport toggle
-  var toggle = document.getElementById('rdx-report-toggle');
-  var body = document.getElementById('rdx-report-body');
-  if (toggle && body) {
-    toggle.addEventListener('click', function() {
-      body.classList.toggle('rdx-open');
-      var label = toggle.querySelector('.rdx-toggle-label');
-      if (body.classList.contains('rdx-open')) {
-        label.textContent = 'Masquer le rapport';
-      } else {
-        label.textContent = 'Voir le rapport complet';
-      }
+(function(){
+  var toggle=document.getElementById('toggle');
+  var body=document.getElementById('rbody');
+  if(toggle&&body){
+    toggle.addEventListener('click',function(){
+      var open=body.classList.toggle('open');
+      toggle.classList.toggle('open',open);
+      toggle.querySelector('.toggle-label').textContent=open?"Masquer l'extrait":"Voir un extrait du rapport";
     });
   }
 })();
 </script>
+
+</body>
+</html>
